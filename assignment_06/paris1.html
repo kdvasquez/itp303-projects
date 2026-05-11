@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Paris Itinerary | Karla Vasquez </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link href="lib/font/css/open-iconic-bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        #img-list img {
+            max-width: 300px;
+            max-height: 300px;
+        }
+        #default-pic {
+            visibility: hidden; 
+            max-width: 300px;
+            max-height: 300px;
+        }
+  
+    </style>
+</head>
+<body>
+    <div class="container">
+		<div class="row">
+			<h1 class="col-12">Paris Itinerary</h1>
+		</div> <!-- .row -->
+
+        <form id="itinerary-form">
+
+        <!--FOOD FIELD-->
+		<div class="row mt-4">
+			<h2 class="col-12">Must Try Food Places</h2>
+			<div class="col-12 mt-4">
+					<div class="form-row">
+						<div class="col-12 mt-2 col-sm-6 mt-sm-0">
+							<label for="prio-item" class="sr-only">Must Try Food item:</label>
+							<input type="text" class="form-control" id="prio-item" placeholder="Must Eat...">
+                            <small id="prio-error" class="form-text text-danger"></small>
+
+                    
+						</div> <!-- .col -->
+
+						<div class="col-12 mt-2 col-sm-3 mt-sm-0">
+							<label for="priority" class="sr-only">Priority:</label>
+							<select id="priority" class="form-control">
+								<option value="High">$$$</option>
+								<option value="Medium">$$</option>
+								<option value="Low">$</option>
+							</select>
+						</div> <!-- .col -->
+
+						<div class="col-12 mt-2 col-sm-auto mt-sm-0">
+
+                            <button type="button" id="add-prio" class="btn btn-primary">Add</button>
+                         
+						</div> <!-- .col -->
+
+                    </div> <!--.form-row-->
+			</div> <!-- .col -->
+            
+		</div> <!-- .row -->
+        <div class="row">
+            <div class="col-12 mt-3">
+                <button id="prio-delete" class="btn btn-outline-danger mb-3">Delete All</button>
+                <ul id="prio-list" class="list-group">
+					
+					<li class="list-group-item d-flex justify-content-between">
+						<div class="todo-item">Baguettes</div>
+						<div class="todo-info">
+							<span class="badge badge-pill mr-3 badge-danger">$$$</span>
+							<span class="todo-remove oi oi-circle-x" title="Remove"></span>
+						</div>
+					</li>
+					
+					<li class="list-group-item d-flex justify-content-between">
+						<div class="todo-item">Cheesecake</div>
+						<div class="todo-info">
+							<span class="badge badge-pill mr-3 badge-warning">$$</span>
+							<span class="todo-remove oi oi-circle-x" title="Remove"></span>
+						</div>
+					</li>
+					
+					<li class="list-group-item d-flex justify-content-between">
+						<div class="todo-item">Pizza</div>
+						<div class="todo-info">
+							<span class="badge badge-pill mr-3 badge-success">$</span>
+							<span class="todo-remove oi oi-circle-x" title="Remove"></span>
+						</div>
+					</li>
+
+				</ul>
+            </div>
+        </div>
+
+        <!--PLACES FIELD-->
+        <div class="row mt-4">
+			<h2 class="col-12">Places to Visit</h2>
+			<div class="col-12 mt-4">
+					<div class="form-row">
+						<div class="col-12 mt-2 col-sm-6 mt-sm-0">
+							<label for="places-item" class="sr-only">Place to Visit</label>
+							<input type="text" class="form-control" id="places-item" placeholder="Paris Attraction...">
+                            <small id="places-error" class="form-text text-danger"></small>
+						</div> <!-- .col -->
+						<div class="col-12 mt-2 col-sm-auto mt-sm-0">
+                            <button type="button" id="add-places" class="btn btn-primary">Add</button>						</div> <!-- .col -->
+					</div> <!-- .form-row -->
+			</div> <!-- .col -->
+		</div> <!-- .row -->
+
+        <div class="row">
+			
+            <div class="col-12 mt-3">
+				<button id="places-delete" class="btn btn-outline-danger mb-3">Delete All</button>
+				<table id="places-list" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Places</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <!-- <tr>
+
+                        </tr> -->
+
+                    </tbody>
+
+				</table>
+			</div> <!-- .col -->
+		</div> <!-- .row -->
+
+        <!--IMAGE FIELD-->
+        <div class="row mt-4">
+			<h2 class="col-12">Image URL</h2>
+			<div class="col-12 mt-4">
+					<div class="form-row">
+						<div class="col-12 mt-2 col-sm-6 mt-sm-0">
+							<label for="img-item" class="sr-only">Must visit img:</label>
+							<input type="text" class="form-control" id="img-item" placeholder="Image URL...">
+                            <small id="image-error" class="form-text text-danger"></small>
+						</div> <!-- .col -->
+						<div class="col-12 mt-2 col-sm-auto mt-sm-0">
+                            <button type="button" id="add-img-url" class="btn btn-primary">Add</button>						</div> <!-- .col -->
+					</div> <!-- .form-row -->
+			</div> <!-- .col -->
+		</div> <!-- .row -->
+
+
+        <div class="row">
+			
+            <div class="col-12 mt-3">
+				<button id="img-delete" class="btn btn-outline-danger mb-3">Delete All</button>
+				<table id="img-list" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Images</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <!-- <tr>
+                            <img id="default-pic" src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-james-wheeler-414612.jpg&fm=jpg" alt="Default Img">
+                        </tr> -->
+
+                    </tbody>
+
+				</table>
+			</div> <!-- .col -->
+		</div> <!-- .row -->
+
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button id="submission" type="submit" class="btn btn-primary">Submit</button>
+            </div> <!-- .col -->
+        </div> <!-- .form-group -->
+    </form>
+
+
+    <!-- <div id="submission-info" style="display: none;">
+        <p>Food to try <span id="full-list"></span></p>
+        <p>Places to visit: <span id="full-table"></span></p>
+        <p>Image(s): <span id="formatted-image"></span></p>
+    </div> -->
+
+	</div> <!-- .container -->
+
+    <script>
+        document.querySelector("#prio-delete").onclick = () => {
+			document.querySelector("#prio-list").innerHTML = ''
+            document.querySelector("#prio-error").innerHTML = ''
+            return false
+		}
+
+        document.querySelector("#places-delete").onclick = () => {
+			document.querySelector("#places-list tbody").innerHTML = ''
+		}
+        document.querySelector("#img-delete").onclick = () => {
+            console.log("img deleted")
+			document.querySelector("#img-list tbody").innerHTML = ''
+        }
+
+        // 	PRIORITIZED TO DO LIST
+		function bindRemoveBtns() {
+			const removeBtns = document.querySelectorAll(".todo-remove")
+
+			for (let i = 0; i < removeBtns.length; i++) {
+				removeBtns[i].onclick = function() {
+					this.parentElement.parentElement.remove()
+				}
+			}
+		}
+
+		bindRemoveBtns()
+        document.querySelector("#add-img-url").onclick = () => {
+            const imgUrl = document.querySelector("#img-item").value.trim()
+
+            if(imgUrl.length > 0) {
+                // Find duplicates
+				const listItems = document.querySelectorAll("#img-list img")
+                for (item of listItems) {
+                    if (imgUrl === item.src) {
+                        alert(imgUrl + " is already on the list.")
+                        return false
+                    }
+                }
+                const newImg = document.createElement("img")
+                newImg.src = imgUrl
+                newImg.alt = "Image"
+
+                //Append the image to container
+                const imgContainer = document.querySelector("#img-list")
+                // Create element nodes
+				const tr = document.createElement("tr")
+				const td = document.createElement("td")
+                td.appendChild(newImg)
+                tr.appendChild(td)
+                imgContainer.appendChild(tr)
+            } else {
+                console.log("no img provided")
+            }
+			
+            // clear the input field
+            document.querySelector("#img-item").value = ''
+			return false
+            
+        }
+        document.querySelector("#add-places").onclick = () => {
+			const input = document.querySelector("#places-item").value.trim()
+
+			// create list itme only when users fill out the form
+			if (input.length > 0) {
+                //Find duplicates
+				const listItems = document.querySelectorAll("#places-list td")
+
+				for (item of listItems) {
+					if (input === item.innerHTML) {
+						alert(input + " is already on the list.")
+						return false
+					}
+				}
+				let tableBody = document.querySelector("#places-list tbody")
+				const firstItem = document.querySelectorAll("#places-list tbody tr")[0]
+
+				// Create element nodes
+				const tr = document.createElement("tr")
+				const td = document.createElement("td")
+
+				td.innerHTML = input
+
+				// Structure the elements and add it to the DOM
+				tr.appendChild(td) 
+				tableBody.insertBefore(tr, firstItem)
+
+				// clear the input field
+				document.querySelector("#places-item").value = ''
+			}
+
+			return false
+		}
+
+        document.querySelector("#add-prio").onclick = () => {
+            const inputValue = document.querySelector("#prio-item").value.trim()
+			const priority = document.querySelector("#priority").value
+
+			if (inputValue.length > 0) {
+				const listItems = document.querySelectorAll("#prio-list .todo-item")
+
+            for (item of listItems) {
+                if (inputValue === item.innerHTML) {
+                    alert(inputValue + " is already on the list.")
+                    return false
+                }
+            }
+				// create element nodes
+				const li = document.createElement("li")
+				const divItem = document.createElement("div")
+				const divInfo = document.createElement("div")
+				const spanBadge = document.createElement("span")
+				const spanRemove = document.createElement("span")
+
+				// add innerHTML and attributes
+				divItem.innerHTML = inputValue
+				spanBadge.innerHTML = priority
+
+				li.classList.add("list-group-item", "d-flex", "justify-content-between")
+				divItem.classList.add("todo-item")
+				divInfo.classList.add("todo-info")
+				spanRemove.classList.add("todo-remove", "oi", "oi-circle-x")
+
+				spanBadge.classList.add("badge", "badge-pill", "mr-3")
+
+				if (priority == "High") {
+                    spanBadge.innerHTML = "$$$";
+					spanBadge.classList.add("badge-danger")
+				} else if (priority == "Medium") {
+                    spanBadge.innerHTML = "$$";
+					spanBadge.classList.add("badge-warning")
+				} else {
+                    spanBadge.innerHTML = "$";
+					spanBadge.classList.add("badge-success")
+				}
+
+				spanRemove.title = "Remove"
+
+				// structure and add the element nodes to DOM
+				li.appendChild(divItem)
+				li.appendChild(divInfo)
+
+				divInfo.appendChild(spanBadge)
+				divInfo.appendChild(spanRemove)
+
+				document.querySelector("#prio-list").appendChild(li)
+				document.querySelector("#prio-item").value = ''
+
+				bindRemoveBtns()
+			}
+            return false
+            
+        }
+
+        document.querySelector("#itinerary-form").addEventListener('submit', (event) => {
+        event.preventDefault(); 
+
+        let validForm = true;
+
+        // Check if Must try food is empty
+        const prioListItems = document.querySelectorAll("#prio-list li")
+        if (prioListItems.length === 0) {
+            validForm = false
+            document.querySelector("#prio-error").innerHTML = "Food cannot be empty." 
+        } else {
+            document.querySelector("#prio-error").innerHTML = ""
+        }
+
+        // Check if Places to Visit List is empty
+        const placesListItems = document.querySelectorAll("#places-list tbody tr")
+        if (placesListItems.length === 0){
+            validForm = false
+            document.querySelector("#places-error").innerHTML = "Places to visit cannot be empty"
+        } else {
+            document.querySelector("#places-error").innerHTML = ""
+        }
+        // const imgItems = document.querySelectorAll("img-list img")
+        // if (imgItems.length == 0) {
+
+        // }
+
+        if (validForm) {
+            console.log("Form submitted successfully!");
+        }
+    });
+            
+
+        
+    </script>
+
+</body>
+</html>

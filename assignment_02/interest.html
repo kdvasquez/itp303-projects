@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Castaway Diva | Karla Vasquez</title>
+
+    <style>
+        body {
+            margin: 0px;
+            background-color: #69d4ff;
+            
+        }
+        h1 {
+            margin: 0px;
+        }
+        #header {
+            /* background-image: url('https://static1.moviewebimages.com/wordpress/wp-content/uploads/2023/11/castaway-diva-10-reasons-why-this-k-drama-offers-a-refreshing-story.jpg'); */
+            background-image: url('https://ntvb.tmsimg.com/assets/p25827855_b_h8_aa.jpg?w=1280&h=720');
+            height: 300px;
+            width: 1500px;
+            background-size: cover;
+            /* background-position: center; */
+            color:black;
+            font-size: 1.5em;
+            text-align: center;
+            line-height: 500px;
+            text-shadow: 0px 0px 10px #000;
+        }
+        #main {
+            width: 800px;
+            background-color: pink;
+            /* margin-left: auto;
+            margin-right: auto; */
+            /* padding: 15px; */  
+            display: flex; 
+            flex-direction: row; 
+        }
+        #sidebar {
+            background-color: antiquewhite;
+            width: 200px;
+            padding: 15px;
+            border-right: 1px solid;     
+        }
+        #page-wrapper {
+            background-color: #69d4ff;
+          
+            display: flex;
+            justify-content: center;
+        }
+        #gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        /* .img-container + p {
+            text-align: center;
+        } */
+        .thumbnail {
+            /* width of #main = 800px 
+            # of thumbnail = 4 
+            800px / 4 = 200px per thumbnail*/
+            /* width: 200px; */
+            height: auto;
+            margin: 5px;
+
+            /* 
+                200px - 5px right margin - 5px left margin  = 190px
+            */
+            /* width: 190px; */
+            border: 1px solid #000;
+            /*
+                190px - 1px right border - 1px left border 
+            */
+            width: 188px;
+            opacity: 0.7;
+        }
+        .thumbnail:hover {
+            opacity: 1.0;
+        }
+        .thumbnail + p {
+            text-align: center;
+            /* display: none; */
+            visibility: hidden;
+        }
+        .thumbnail:hover + p {
+            /* display: block; */
+            visibility: visible; 
+        }
+        #footer {
+            background-color: gray;
+            color: #FFF;
+            text-align: center;
+            height: 50px;
+            width: 1500px;
+            line-height: 50px;
+            font-size: 0.8em;
+        }
+        #nav {
+            box-shadow: 0px 2px 5px #CCC;
+            display: flex;
+            justify-content: center;
+        }
+        #nav a {
+            text-decoration: none;
+            color: #444;
+            background-color: white;
+            /* 800px size of main + sidebar = 800/3 = 266*/
+            width: 266.6px;
+            height: 50px;
+            display: block;
+
+            text-align: center;
+            line-height: 50px;
+            border-bottom: 2px solid #FFF;
+        }
+        #nav a:hover {
+            border-bottom: 2px solid #900;
+            color: #900;
+        }
+        #text-content {
+            background-color: #b8e3f5;
+            width: 569px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .rightImg{
+            float: right;
+            width: 150px;
+            height: auto;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div id="header">
+        <h1>Castaway Diva</h1>
+    </div> <!--#header-->
+
+    <div id="nav">
+        <a href="#about">About</a>
+        <a href="#characters">Characters</a>
+        <a href="#commentary">Commentary</a>
+    </div> <!--#nav-->
+
+    <div id="page-wrapper">
+   
+        <div id="main">
+    
+          
+            <div id="sidebar">
+                <h2>Recent Stills</h2>
+    
+                <div id="gallery">
+                    <div class="img-container">
+                        <img class="thumbnail" src="https://i.pinimg.com/564x/a5/a6/df/a5a6df96e05caf95804e88e6c96c2054.jpg" alt="Still 1">
+                        <p>Mok-Ha and Bo-geoul</p>
+                    </div>  <!--.img-container-->
+                    
+                    <div class="img-container">
+                        <img class="thumbnail" src="https://i.pinimg.com/474x/8a/07/47/8a07478c07be2b28b597cbb743752859.jpg" alt="Still 2">
+                        <p>Mok-Ha's Childhood and Present</p>
+                    </div>  <!--.img-container--> 
+    
+                    <div class="img-container">
+                        <img class="thumbnail" src="https://i.pinimg.com/474x/18/ab/8d/18ab8da304546c921166b52eb6e2a7d3.jpg" alt="Still 3">
+                        <p>The Confession</p>
+                    </div> <!--.img-container-->
+    
+                    <div class="img-container">
+                        <img class="thumbnail" src="https://i.pinimg.com/474x/f4/35/21/f43521af5c40bf30539b6dfdeb5d42e5.jpg" alt="Still 4">
+                        <p>What Happened</p>
+                    </div> <!--.img-container-->  
+                </div> <!--#gallery-->
+            </div> <!--#sidebar-->
+
+            <div id="text-content">
+
+                <h2 id="about">About Castaway Diva</h2>
+                <img class="rightImg" src="https://i.pinimg.com/564x/94/3f/de/943fdef847fb490146540a36e0aa95b2.jpg" alt='CD1'> 
+                <p>Castaway Diva is a 2023 South Korean Drama that tells the story of two childhood 
+                    friends who are united due to experiencing similar circumstances. 
+                    An audition in Seoul, far away from the Seo Mok-Ha's island, is Seo Mok-Ha's 
+                    hope to escape from her abusive father. But in order to succeed, she
+                    needs some help. She finds this help in the quiet Kang Bo-gul, who was willing
+                    to take up the job as camera man for the extra money. This was the start of their 
+                    friendship. 
+                    
+                </p>
+
+                <p>
+                    They accidentally reveal the scars of their childhood to each other. When they 
+                    decide to escape, life literally takes them away. Seo Mok-Ha's spite and perseverance
+                    are what gets her through the fifteen long years that she was stranded on an island. 
+                    The way she was found, and the challenges she navigated along the way, along with the 
+                    unexpected friendships formed, make it a heartwarming twelve episodes long. It is wonderful!
+                </p>
+
+                <p>
+                    Get ready to watch this with all your family and friends! The main lead will make 
+                    you laugh, rage, cry, and live through all the emotions as she navigates life after
+                    being a castaway. 
+                </p>
+
+                <h2 id="characters">Characters</h2>
+                <img class="rightImg" src="https://i.pinimg.com/564x/3a/29/19/3a29191f97f22ca838042b3d08924959.jpg" alt="CD2">
+                <p>All the characters are amazing. Their bond is unbreakable. You'll meet Seo-Mok-Ha,
+                    who is optimistic and has great potential to be an amazing singer. You'll meet
+                    Kang-Bo-geoul who is her childhood friend and never gave up searching for her, truely 
+                    believing that she was alive.
+                </p>
+
+                <p>Reporter Kang is Kang-Bo-geoul's brother. He will become Seo-Mok-Ha's number one fan,
+                    as he comes to admire her. His mischievous and quick thinking is what helps the 
+                    two main leads come together at last! Furthermore, he brings in the comedy to the show when 
+                    there are far too many sad scenes to deal with.
+                </p>
+
+                <h2 id="commentary">Commentary</h2>
+                <img class="rightImg" src="https://i.pinimg.com/564x/85/bc/6e/85bc6ea7e48a5fc975ca1162eacb75d4.jpg" alt="CD3">
+                <p>I really enjoyed this Korean Drama. I stumbled across it after watching a YouTube
+                    clip titled, "A Kiss After 15 Years". I thought this was a drama about couples giving
+                    each other second chances. It was much more than that! It was a drama about being given
+                    a chance to live life after surviving an abusive childhood, and the challenging years 
+                    afterwards. 
+                </p>
+
+                <p>
+                    Furthermore, this was a comfort drama. You can watch it and enjoy the bonds that are 
+                    formed over the main lead's charisma and innocence. She is sweet, but knows how to stand
+                    her ground, and is optimistic as she holds onto the hope of finding the friend that helped
+                    her escape, not knowing he was closer than she could ever know!
+                </p>
+
+                <p>
+                    Finally, the themes this drama tackles from childhood traumas, perservance, selfish love,
+                    and the importance of honesty and the consequences of lack of transparency are developed
+                    really well. Much character development is seen! There is not a moment that is wasted 
+                    with useless scenes. 
+                </p>
+
+            </div>
+        
+        </div>
+
+    </div> <!--#page-wrapper-->
+    <div id="footer">
+        dearKDV &copy; 2024
+    </div> <!--#footer-->
+
+</body>
+</html>

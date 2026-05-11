@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="shared.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Adoption Site</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font  -->
+
+  <style>
+    .gallery-item {
+      width: calc(33.33% - 20px); /* Three columns with some margin between */
+      margin: 10px;
+    }
+    .img-fluid {
+        height: 300px;
+        width: 300px;
+    }
+    .navbar{
+      padding-bottom: 200px;
+    }
+    .navbar-nav .nav-link.active {
+  font-weight: bold;
+  color: yellow;
+}
+
+    /* #footer {
+            background-color: #CFBAE1;
+            color: #FFF;
+            text-align: center;
+            height: 100px;
+            line-height: 50px;
+            font-size: 0.8em;
+            margin-top: 40px;
+        } */
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="login.html"><strong>Pawleeze</strong></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="shop.html"><strong>Shop</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html"><strong>Cart</strong></a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="about.html"><strong>About</strong></a>
+          </li> -->
+        </ul> 
+      </div>
+    </div>
+  </nav> <!--.navbar-->
+
+  <!-- Gallery -->
+  <div class="container mt-4">
+    <div class="row">
+      <!-- User Profile -->
+      <div class="col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">User Profile</h5>
+            <p class="card-text">Welcome!</p>
+            <!-- <a href="#" class="btn btn-primary">Edit Profile</a> -->
+          </div>
+        </div>
+        <h2>My Cart</h2>
+        <p>Click "Cart" on navbar to checkout! </p>
+        <ul id="cart-items">
+          <!-- Cart list will be displayed here -->
+          <template id="cart-item-template">
+            <li>Name: <span class="pet-name"></span>, Details: <span class="pet-details"></span>
+                <button class="btn btn-danger btn-sm remove-btn">Remove</button>
+            </li>
+          </template>
+        </ul>
+        <hr>
+        <h2>Up for Adoption</h2>
+        <p>Have a pet you'd like someone to adopt? Fill out the form below to add to our database! </p>
+        <form id="addPet">
+          <div class="mb-2">
+            <label for="inputName" class="col-sm-4 form-label">Name: </label>
+            <input type="text" class="form-control mb-1" id="inputName" placeholder="Susana">
+            <label for="inputBreed" class="col-sm-4 form-label">Breed: </label>
+            <input type="text" class="form-control mb-1" id="inputBreed" placeholder="Bulldog">
+            <label for="inputAge" class="col-sm-4 form-label">Age: </label>
+            <input type="text" class="form-control mb-1" id="inputAge" placeholder="3">
+            <label for="inputOrigin" class="col-sm-4 form-label">From: </label>
+            <input type="text" class="form-control mb-1" id="inputOrigin" placeholder="Scotland">
+            <label for="inputFees" class="col-sm-4 form-label">Fees: </label>
+            <input type="text" class="form-control mb-1" id="inputFees" placeholder="$1000">
+          </div>
+          <button type="submit">Add Pet</button>
+        </form>
+        <ul id="up-for-adoption">
+      
+        </ul>
+        
+      </div>
+      <!-- Image Gallery -->
+      <div class="col-lg-9">
+        <div class="row">
+          <!-- Hard-coded images -->
+          <div class="col-md-4 gallery-item">
+            <img src="https://i.pinimg.com/564x/92/2a/88/922a88894fb69ec8d6360931a767bc4b.jpg" alt="Pet 1" class="img-fluid">
+              <ul>
+                <li>Name: Conan</li>
+                <li>Breed: Corgi, Dog</li>
+                <li>Age: 3</li>
+                <li>From: Japan</li>
+                <li>Fees: $200</li>
+              </ul>
+            
+
+            <button onclick="addtoCart('Conan')" type="button" class="btn btn-primary">Add to Cart</button>
+          </div>
+          <div class="col-md-4 gallery-item">
+            <img src="https://i.pinimg.com/564x/ee/2a/71/ee2a7149341c2b23ae2e9c7358ec247d.jpg" alt="Pet 2" class="img-fluid">
+          
+              <ul>
+                <li>Name: Vannesa</li>
+                <li>Breed: Ragdoll, Cat</li>
+                <li>Age: 1</li>
+                <li>From: France</li>
+                <li>Fees: $180</li>
+              </ul>
+            
+            <button onclick="addtoCart('Vannesa')" type="button" class="btn btn-primary">Add to Cart</button>
+          </div>
+          <div class="col-md-4 gallery-item">
+            <img src="https://i.pinimg.com/564x/d8/6d/0c/d86d0cfbfef122ad5c0f6e47a7544719.jpg" alt="Pet 3" class="img-fluid">
+            
+              <ul>
+                <li>Name: Sandy</li>
+                <li>Breed: Ragdoll, Dog</li>
+                <li>Age: 7</li>
+                <li>From: Costa Rica</li>
+                <li>Fees: $135</li>
+              </ul>
+            
+            <button onclick="addtoCart('Sandy')" type="button" class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 gallery-item">
+                <img src="https://i.pinimg.com/564x/6f/fa/f8/6ffaf8c2710fd265371e38a6b5434540.jpg" alt="Pet 4" class="img-fluid">
+                
+                  <ul>
+                    <li>Name: Tom</li>
+                    <li>Breed: German Shepherd</li>
+                    <li>Age: 8</li>
+                    <li>From: Italy</li>
+                    <li>Fees: $500</li>
+                </ul>
+                
+                <button onclick="addtoCart('Tom')" type="button" class="btn btn-primary">Add to Cart</button>
+              </div>
+              <div class="col-md-4 gallery-item">
+                <img src="https://i.pinimg.com/564x/0d/4a/63/0d4a63bd814e28e9a855b45141b6f871.jpg" alt="Product 5" class="img-fluid">
+                
+                  <ul>
+                    <li>Name: Ausie</li>
+                    <li>Breed: Austrailian Shepherd</li>
+                    <li>Age: 10</li>
+                    <li>From: Australia</li>
+                    <li>Fees: $300</li>
+                  </ul>
+                
+                <button onclick="addtoCart('Ausie')" type="button" class="btn btn-primary">Add to Cart</button>
+              </div>
+              <div class="col-md-4 gallery-item">
+                <img src="https://i.pinimg.com/736x/2a/ae/09/2aae09cf42143bb1926502690e31b1b5.jpg" alt="Product 6" class="img-fluid">
+                
+                  <ul>
+                    <li>Name: Cone, Cat</li>
+                    <li>Breed: Exotic Shorthair</li>
+                    <li>Age: 7</li>
+                    <li>From: USA</li>
+                    <li>$234</li>
+                  </ul>
+                
+                <button onclick="addtoCart('Cone')" type="button" class="btn btn-primary">Add to Cart</button>
+              </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 gallery-item">
+                <img src="https://i.pinimg.com/564x/d5/81/07/d581070b764525dffa93413e8a2ae486.jpg" alt="Product 7" class="img-fluid">
+                <ul>
+                    <li>Name: SuSu </li>
+                    <li>Breed: Shih Tzu, Dog</li>
+                    <li>Age: 7</li>
+                    <li>From: USA</li>
+                    <li>Fees: $100</li>
+                </ul>
+                
+                <button onclick="addtoCart('SuSu')" type="button" class="btn btn-primary">Add to Cart</button>
+              </div>
+              <div class="col-md-4 gallery-item">
+                <img src="https://i.pinimg.com/564x/62/50/1f/62501fd0365e2ab8abeb0347ad3800ed.jpg" alt="Product 8" class="img-fluid">
+                
+                  <ul>
+                    <li>Name: Susie</li>
+                    <li>Breed: Poodle, Dog</li>
+                    <li>Age: 7</li>
+                    <li>From: Peru</li>
+                    <li>Fees: $290</li>
+                  </ul>
+                
+                <button onclick="addtoCart('Conan')" type="button" class="btn btn-primary">Add to Cart</button>
+              </div>
+              <div class="col-md-4 gallery-item">
+                <img src="https://i.pinimg.com/564x/02/6a/ba/026aba80bd59772b67a514d9b9f5844a.jpg" alt="Product 9" class="img-fluid">
+                
+                  <ul>
+                    <li>Name: Henry</li>
+                    <li>Breed: Chihuahua, Dog</li>
+                    <li>Age: 7</li>
+                    <li>From Hungary</li>
+                    <li>Fees: $348</li>
+                  </ul>
+                
+                <button onclick="addtoCart('Henry')" type="button" class="btn btn-primary">Add to Cart</button>
+              </div>
+      </div>
+
+    </div>
+      
+    </div> <!--.row-->
+  </div> <!--.container-->
+  
+  <script>
+    document.getElementById('addPet').addEventListener('submit', function(event) {
+      event.preventDefault()
+      let name = document.getElementById('inputName').value 
+      let breed = document.getElementById('inputBreed').value 
+      let age = document.getElementById('inputAge').value 
+      let origin = document.getElementById('inputOrigin').value 
+      let fees = document.getElementById('inputFees').value 
+    
+      let newPet = {
+        name: name,
+        breed: breed, 
+        age: age, 
+        origin: origin, 
+        fees: fees 
+      };
+      addPettoGal(newPet);
+      alert('Added Pet, Yay');
+      document.getElementById('addPetForm') = "";
+    });
+
+    function addPettoGal(pet) {
+      let petMark = `
+          <div class="col-md-4 gallery-item">
+            <img src="https://i.pinimg.com/564x/1a/98/9f/1a989fdeb54d8a7ba2f412d67f73c8ef.jpg" alt="${pet.name}" class="img-fluid">
+            <p> 
+              <ul> 
+              <li>Name: ${pet.name}</li>
+              <li>Breed: ${pet.breed}</li>
+              <li>Age: ${pet.age}</li>
+              <li>Origin: ${pet.origin}</li>
+              <li>Fees: ${pet.fees}</li>
+              </ul>
+            </p>
+            <button onclick="addtoCart('${pet.name}', '${pet.breed}', '${pet.age}', '${pet.origin}', '${pet.fees}')" type="button" class="btn btn-primary">Add to Cart</button>
+          </div> `; 
+            let gallery = document.querySelector('.col-lg-9')
+            let lastGalItem = gallery.lastElementChild;
+            lastGalItem.insertAdjacentHTML('beforeend', petMark)
+    }
+    
+    // Function to add a new item to the cart
+    function addtoCart(petName, petDetails) {
+        // Clone the template content
+        var template = document.getElementById('cart-item-template');
+        var clone = template.content.cloneNode(true);
+
+        // Update the cloned item with pet details
+        clone.querySelector('.pet-name').textContent = petName;
+        clone.querySelector('.pet-details').textContent = petDetails;
+
+        // Add event listener to remove button
+        clone.querySelector('.remove-btn').addEventListener('click', function() {
+            // Remove the corresponding item when the remove button is clicked
+            clone.remove();
+            // Update local storage with the modified cart items
+            updateLocalStorage();
+        });
+
+        // Append the cloned item to the cart list
+        var cartList = document.getElementById('cart-items');
+        cartList.appendChild(clone);
+
+        // Update local storage with the added item
+        updateLocalStorage();
+        alert('Added pet to cart, yay!');
+    }
+
+    //Updates local storage with current cart items
+    function updateLocalStorage() {
+        var cartItems = [];
+        var cartList = document.getElementById('cart-items').querySelectorAll('li');
+
+        //Get cart item details and add to the cartItems array
+        cartList.forEach(function(item) {
+            var name = item.querySelector('.pet-name').textContent;
+            var details = item.querySelector('.pet-details').textContent;
+            cartItems.push({ name: name, details: details });
+        });
+
+        // Store cart items in local storage
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
+
+    // Add event listener to the parent element of the remove buttons
+    document.getElementById('cart-items').addEventListener('click', function(event) {
+    // Check if the clicked element is a remove button
+    if (event.target && event.target.classList.contains('remove-btn')) {
+        // Get the parent li element of the clicked remove button
+        var listItem = event.target.closest('li');
+        
+        // Remove the corresponding item
+        listItem.remove();
+        
+        // Update local storage with the modified cart items
+        updateLocalStorage();
+        
+    }
+    alert('Pet removed!');
+});
+
+</script>
+   
+  <div id="footer" class="container-fluid">
+    <div class="row">
+        <div class="col-12 text-center">
+            dearKDV &copy; 2024
+            <p>10% of proceeds go to a dog org
+            </p>
+        </div>
+    </div>
+</div> <!--#footer-->
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

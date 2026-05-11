@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Registration Form | Karla Vasquez </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        #submission-info {
+            padding-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+		<div class="row">
+			<h2 class="col-12 mt-5 mb-4">Signup Form</h2>
+
+			<div class="col-12">
+				Validation rules:
+				<ul>
+					<li class="mt-2">Email cannot be empty.</li>
+					<li>Email must contain "@" character.</li>
+					<li >Phone cannot be empty.</li>
+					<li>Phone must use one of the acceptable formats.</li>
+					<li>Website is required</li>
+                    <li>Password is required</li>
+				</ul>
+			</div> <!-- .col -->
+
+			<div class="col-12">
+
+				<form id="signup-form" >
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-2 col-form-label">Name:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="name" class="form-control" placeholder="Tommy" id="name">
+                            <small id="name-error" class="form-text text-danger"></small>
+
+                        </div>
+                    </div> <!--.form-group-->
+
+                    <div class="form-group row">
+                        <label for="lastname" class="col-sm-2 col-form-label">Last Name:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="lastname" class="form-control" placeholder="Trojan" id="lastname">
+                            <small id="lastname-error" class="form-text text-danger"></small>
+                            
+                        </div>
+                    </div> <!--.form-group-->
+
+					<div class="form-group row">
+						<label for="email" class="col-sm-2 col-form-label">Email:</label>
+						<div class="col-sm-10">
+							<input type="text" name="email" class="form-control" placeholder="ttrojan@usc.edu" id="email">
+
+							<small id="email-error" class="form-text text-danger"></small>
+
+						</div>
+					</div> <!-- .form-group -->
+
+                    <div class="form-group row">
+						<label for="website" class="col-sm-2 col-form-label">Website:</label>
+						<div class="col-sm-10">
+							<input type="text" name="website" class="form-control" placeholder="https://usc.edu" id="website">
+
+							<small id="website-error" class="form-text text-danger"></small>
+
+						</div>
+					</div> <!-- .form-group -->
+                    <div class="row mb-2">
+						<div class="col-sm-8 offset-sm-2">
+							<small class="form-text text-muted">Must start with http:// or https://</small>
+						</div>
+					</div> <!-- .row -->
+
+					<div class="form-group row">
+						<label for="phone" class="col-sm-2 col-form-label">Phone:</label>
+						<div class="col-sm-8">
+							<input type="text" name="phone" class="form-control" placeholder="123-456-7890" id="phone">
+
+							<small id="phone-error" class="form-text text-danger"></small>
+
+						</div>
+					</div> <!-- .form-group -->
+                    <div class="row mb-2">
+						<div class="col-sm-8 offset-sm-2">
+							<small class="form-text text-muted">Acceptable formats: 123 456 7890, 123-456-7890</small>
+						</div>
+					</div> <!-- .row -->
+
+                    <div class="form-group row">
+						<label for="password" class="col-sm-2 col-form-label">Password:</label>
+						<div class="col-sm-8">
+							<input type="text" name="password" class="form-control" placeholder="secret" id="password">
+
+							<small id="password-error" class="form-text text-danger"></small>
+
+						</div>
+					</div> <!-- .form-group -->
+
+
+					<div class="form-group row">
+						<div class="col-sm-10">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div> <!-- .col -->
+					</div> <!-- .form-group -->
+
+				</form>
+
+                <div id="submission-info" style="display: none;">
+                    <p>Full Name: <span id="full-name"></span></p>
+                    <p>Username (Email Prefix): <span id="username"></span></p>
+                    <p>Phone Number: <span id="formatted-phone"></span></p>
+                </div>
+
+			</div> <!-- .col -->
+		</div> <!-- .row -->
+   
+	</div> <!-- .container -->
+
+    <script>
+        function formatPhoneNumber(phone) {
+            var digitsOnly = phone.replace(/\D/g, '')
+            var formattedNum = digitsOnly.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')
+            return formattedNum
+        }
+        /***** Form Events *****/
+		document.querySelector("#signup-form").onsubmit = function() {
+			// console.log("Form Submitted")
+            event.preventDefault()
+			let validFrom = true
+
+			const email = document.querySelector("#email").value.trim()
+			console.log(email)
+
+            const name = document.querySelector("#name").value.trim() 
+            console.log(name)
+            const lastname = document.querySelector("#lastname").value.trim()
+
+            //Checks name
+            const regexName = /^[A-Z][a-z]*$/
+            if (name.length === 0) {
+                validFrom = false 
+                document.querySelector("#name-error").innerHTML = "First name cannot be empty."
+            } else if (!regexName.test(name)){
+                validFrom = false;
+                document.querySelector("#name-error").innerHTML = "Invalid First Name."
+            } else {
+                document.querySelector("#name-error").innerHTML = ""
+            }
+
+            // Checks last name
+            if (lastname.length === 0) {
+                validFrom = false 
+                document.querySelector("#lastname-error").innerHTML = "Name cannot be empty."
+            } else if (!regexName.test(lastname)){
+                validFrom = false;
+                document.querySelector("#lastname-error").innerHTML = "Invalid Last Name."
+            } else {
+                document.querySelector("#lastname-error").innerHTML = ""
+            }
+
+            // Checks email
+            const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+			if (email.length === 0) {
+				validFrom = false
+				document.querySelector("#email-error").innerHTML = "Email cannot be empty."
+			} else if (email.indexOf('@') === -1) {
+				validFrom = false
+				document.querySelector("#email-error").innerHTML = 'Email must contain "@" character.'
+			} else if (!EMAIL_REGEX.test(email)) {
+				validFrom = false
+				document.querySelector("#email-error").innerHTML = 'Must be a valid email.'
+			} else if(!email.toLowerCase().endsWith("usc.edu")){
+                validFrom = false;
+                document.querySelector("#email-error").innerHTML = "Must be usc email"
+            } else {
+				document.querySelector("#email-error").innerHTML = ""
+			}
+
+            // Checks website
+            const website = document.querySelector("#website").value.trim()
+            const urlReg = /^(https?:\/\/)?([\w\d-]+\.)*[\w\d-]+(\.[\w\d-]+)+([\w\d-./?%&=]*)?$/i;
+            if(website.length === 0){
+                validFrom = false
+                document.querySelector("#website-error").innerHTML = "Website cannot be empty"
+            } else if(!website.match(/^https?:\/\//)){
+                validFrom = false;
+                document.getElementById("website-error").innerHTML = "Must start with http:// or https://."
+            } else if(!urlReg.test(website)){
+                validFrom = false
+                document.getElementById("website-error").innerHTML = "Invalid URL."
+            } else {
+                document.getElementById("website-error").innerHTML = ""
+            }
+
+            // Checks password
+            const password = document.querySelector("#password").value.trim()
+            // Regular expressions for each requirement
+            const uppercaseReg = /[A-Z]/
+            const lowercaseReg = /[a-z]/
+            const digitReg = /\d/
+            const specialCharReg = /[!@#$%^&*]/
+            
+            if(password.length === 0){
+                validFrom = false 
+                document.querySelector("#password-error").innerHTML = "Password cannot be empty."
+            } else if(!uppercaseReg.test(password)) {
+                validFrom = false;
+                document.querySelector("#password-error").innerHTML = "Insecure Password"
+            } else if(!lowercaseReg.test(password)) {
+                validFrom = false;
+                document.querySelector("#password-error").innerHTML = "Insecure Password"
+            } else if(!digitReg.test(password)) {
+                validFrom = false;
+                document.querySelector("#password-error").innerHTML = "Insecure Password"
+            } else if(!specialCharReg.test(password)) {
+                validFrom = false;
+                document.querySelector("#password-error").innerHTML = "Insecure Password"
+            } else {
+                document.querySelector("#password-error").innerHTML = ""
+            }
+
+            // Checks phone #
+			const phone = document.querySelector("#phone").value.trim()
+			if (/^$/.test(phone)) {
+				validFrom = false
+				document.querySelector("#phone-error").innerHTML = "Phone cannot be empty."
+			} else if (/^(\d{3}[-\s]\d{3}[-\s]\d{4})$/.test(phone) == false) {
+				// /(a|b|c)/
+				validFrom = false
+				document.querySelector("#phone-error").innerHTML = "Invalid phone format."
+			} else {
+				document.querySelector("#phone-error").innerHTML = ""
+			}
+
+            console.log("Line 233")
+            // Display Submission info
+            if(validFrom) { 
+                console.log("Entered Valid form")
+                document.querySelector("#full-name").innerHTML = name + " " + lastname
+                document.querySelector("#username").innerHTML = email.split('@')[0]
+                document.querySelector("#formatted-phone").innerHTML = formatPhoneNumber(phone)
+                document.querySelector("#submission-info").style.display = "block"
+            }
+            return false
+		}
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+    
+
+</html>

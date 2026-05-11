@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gallery | Castaway Diva</title>
+    <link rel="stylesheet" href="shared.css">
+
+    <style>
+        #img-wrapper {
+            background-color: pink;
+            width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-wrap: wrap;
+            /* margin-bottom: 10px; */
+            margin-top: 0px;
+        }
+        #header {
+            background-image: url('https://theenvoyweb.com/wp-content/uploads/2023/10/Castaway-Diva-season-1-episode-1.jpg');
+            height: 400px;
+            width: 1500px;
+            background-size: cover;
+            color:black;
+            font-size: 1.5em;
+            text-align: center;
+            line-height: 500px;
+            text-shadow: 0px 0px 10px #000;
+        }
+        #main {
+            width: 800px;
+            background-color: pink;
+            display: flex; 
+            flex-direction: row; 
+            flex-wrap: wrap;
+        }
+ 
+        /* #row1, #row2, #row3, #row4 {
+            display: flex;
+        } */
+        
+        /*  width of main: 800px
+            num of images = 10
+        */
+        .img-con {
+            color: black;
+            background-color: blueviolet;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .img-con > img {
+            height: 100%;
+            width: auto;
+        }
+        .img-con > div {
+            position: absolute;
+            background-color: #000;
+            background-color: rgba(0,0,0,0.6);
+            color: #FFF;
+
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+
+            text-align: center;
+            padding-top: 100px;
+            display: none;
+        }
+        .img-con:hover > div {
+            display: block;
+        }
+        /*for row1, pic1 & pic3
+            280 * 2 = 560px + 40px = 600px (20 margin total on each photo)
+            therefore, 600px used, 200px left for last photo, but 
+            since it needs 20margin space, 180px left
+        */
+        #pic1, #pic3 {
+            width: 280px;
+            height: 200px;
+            margin: 10px;
+        }
+        #pic2 {
+            width: 180px;
+            height: 200px;
+            margin: 10px;
+        }
+
+        #pic4, #pic10 {
+            width: 480px;
+            height: 200px;
+            margin: 10px;
+        }
+        #pic5, #pic9 {
+            width: 280px;
+            height: 200px;
+            margin: 10px;
+        }
+        #pic6 {
+            width: 150px;
+            height: 200px;
+            margin: 10px;
+        }
+        #pic7 {
+            width: 280px;
+            height: 200px;
+            margin: 10px;
+        }
+        #pic8 {
+            width: 310px;
+            height: 200px;
+            margin: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>Behind the Scenes</h1>
+    </div> <!--#header-->
+
+    <div id="nav">
+
+        <ul id="top-menu"> 
+            <li><a href="interest.html">Home</a> 
+                <ul class="sub-menu"> 
+                    <li><a href="interest.html#about">About CV</a></li>
+                    <li><a href="interest.html#characters">Characters</a></li>
+                    <li><a href="interest.html#commentary">Commentary</a></li> 
+                </ul>
+            </li>
+
+            <li> <a href="gallery.html" class='active-nav'>Gallery</a> </li>
+        </ul>
+      
+    </div> <!-- #nav-->
+
+    <div id="img-wrapper">
+        <div id="main">
+
+            <!-- <div id="row1"> -->
+
+                <div class="img-con" >
+                    <img id="pic1" src="https://static.wikia.nocookie.net/5847b0f0-cf34-4010-a721-a8936e07dfa4/scale-to-width/755" alt="Peace">
+                    <div>Pic 1</div>
+
+                </div>
+            
+
+                <div class="img-con" >
+                    <img id="pic2" src="https://static.wikia.nocookie.net/7963d6e7-e443-4231-9de6-e616878c810e/scale-to-width/755" alt="Sneaky">
+                    <div>Pic 2</div>
+                </div>
+
+                <div class="img-con" >
+                    <img id="pic3" src="https://static.wikia.nocookie.net/c2bc26cd-493e-494e-a0c2-3447fdfda353/scale-to-width/755" alt="Stare">
+                    <div>Pic 3</div>
+
+                </div>
+
+            <!-- </div> -->
+
+            <!-- <div id="row2"> -->
+
+           
+                <div class="img-con" >
+                    <img id="pic4" src="https://static.wikia.nocookie.net/3c3bccae-d460-4381-894f-a3d6472ff56f/scale-to-width/755" alt="Dimple">
+                    <div>Pic 4</div>
+
+                </div>
+
+                <div class="img-con" >
+                    <img id="pic5" src="https://static.wikia.nocookie.net/cc2f73a7-e6b5-483b-bbb3-1edb4d645927/scale-to-width/755" alt="Concentrate">
+                    <div>Pic 5</div>
+
+                </div>
+
+            <!-- </div> -->
+            
+
+            <!-- <div id="row3"> -->
+                <div class="img-con" >
+                    <img id="pic6" src="https://kdramadiary.com/wp-content/uploads/2023/11/castaway-Diva-episodes-5-and-6-recap-650x433.jpg?ezimgfmt=rs:388x258/rscb1/ng:webp/ngcb1" alt="Concentrate Again">
+                    <div>Pic 6</div>
+
+                </div>
+
+                <div class="img-con" >
+                    <img id="pic7" src="https://butwhytho.net/wp-content/uploads/2023/12/Castaway-Diva-Episodes-11-12-But-Why-Tho-1.jpg" alt="Fans">
+                    <div>Pic 7</div>
+
+                </div>
+
+                <div class="img-con" >
+                    <img id="pic8" src="https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p2/13/2023/11/13/FotoJet-2023-11-13T102952010-1753661094.jpg" alt="Three">
+                    <div>Pic 8</div>
+
+                </div>
+    
+            <!-- </div> -->
+            
+            <!-- <div id="row4"> -->
+
+                <div class="img-con" >
+                    <img id="pic9" src="https://www.comingsoon.net/wp-content/uploads/sites/3/2023/11/castaway-11.png" alt="Decorate">
+                    <div>Pic 9</div>
+    
+                </div>
+                <div class="img-con" >
+                    <img id="pic10" src="https://d2v0j9zp5u17nn.cloudfront.net/wp-content/uploads/2023/11/24131325/c_122331305.1-1024x744.jpg" alt="The End">
+                    <div>Pic 10</div>
+    
+                </div>
+            <!-- </div> -->
+
+            
+            
+        </div> <!--main-->
+    </div> <!--#img-wrapper-->
+
+    <div id="footer">
+        dearKDV &copy; 2024
+    </div> <!--#footer-->
+    
+
+</body>
+</html>

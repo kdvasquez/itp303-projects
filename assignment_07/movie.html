@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Movie DB API</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .poster-img {
+            width: 150px;
+        }
+
+        .poster-img img{
+            margin-top: 10px;
+            width: 20px;
+        }
+
+    </style>
+
+<body>
+    <div class="container">
+        <div class="row">
+			<h1 class="col-12 mt-4">The Movie DB API</h1>
+		</div> <!-- .row -->
+
+        <div class="row">
+			<form class="col-12" id="search-form">
+				<div class="form-row">
+					<div class="col-12 mt-4 col-sm-6 col-lg-4">
+						<label for="search-term" class="sr-only">Search:</label>
+						<input type="text" class="form-control" id="search-term" placeholder="Search...">
+					</div>
+     
+					<div class="col-12 mt-4 col-sm-auto">
+						<button type="submit" class="btn btn-primary">Search</button>
+					</div>
+				</div> <!-- .form-row -->
+                <small id="search-error" class="form-text text-danger"></small>
+
+			</form>
+		</div> <!-- .row -->
+        
+        <div class="row">
+			<div class="col-12 mt-4">
+
+				Showing <span id="num-results" class="font-weight-bold">0</span> of <span id="total" class="font-weight-bold">0</span> result(s).
+
+			</div>
+        </div>
+        <div class="row mt-3 row-header">
+                
+            <div class="col"><strong>Poster:</strong></div>
+            <div class="col"><strong>Title:</strong></div>
+            <div class="col"><strong>Release Date:</strong></div>
+            <div class="col"><strong>Rating:</strong></div>
+           
+        </div>
+
+        <div class="containerResults">
+            <div class="row mt-3 chart">
+                <div class="col poster-img">
+                    <img src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-james-wheeler-414612.jpg&fm=jpg" alt="Pic" class="img-fluid">
+                </div>
+                <div class="col title">The Lost City</div>
+                <div class="col release">3/3/21</div>
+                <div class="col rating">PG-13</div>
+            </div>
+        </div>
+
+	</div> <!-- .containerow -->
+
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+     
+        $.ajax({
+				url: "https://api.themoviedb.org/3/movie/now_playing?api_key=7925cc6f861fdb64109aeedf96149365",
+				dataType: "json",
+				success: function(data) {
+                    console.log("entered ajax")
+					console.log(data)
+					console.log(data.results)
+                    console.log(data.total_results)
+
+					document.querySelector("#num-results").innerHTML = data.results.length
+                    document.querySelector("#total").innerHTML = data.total_results
+                    const containerResults = document.querySelector(".containerResults")
+                    
+                    containerResults.innerHTML = ""
+					for (movie of data.results) {
+						createRow(movie)
+					}
+
+				},
+				error: function(e) {
+					alert("AJAX Error")
+					console.log(e)
+				}
+			})
+  
+        document.querySelector('#search-form').onsubmit = function(){
+			const term = document.querySelector('#search-term').value.trim();
+            if (term.length === 0) {
+                document.querySelector("#search-error").innerHTML = "Please enter your search."
+            }
+            else{
+                document.querySelector("#search-error").innerHTML = " "
+            }
+            
+            $.ajax({
+				url: `https://api.themoviedb.org/3/search/movie?api_key=7925cc6f861fdb64109aeedf96149365&query=${term}&include_adult=false`,
+				dataType: "json",
+				success: function(data) {
+                    console.log("entered ajax")
+					console.log(data.total_results)
+                    console.log(data.total_pages)
+					console.log(data.results)
+
+                    const numofResults = data.results.length 
+                    const totalResults = data.total_results
+                    document.querySelector("#num-results").innerHTML = numofResults 
+                    document.querySelector("#total").innerHTML = totalResults
+					// document.querySelector("#num-results").innerHTML = data.resultCount
+                    const containerResults = document.querySelector(".containerResults")
+                    
+                    containerResults.innerHTML = ""
+					for (movie of data.results) {
+						createRow(movie)
+					}
+
+				},
+				error: function(e) {
+					alert("AJAX Error")
+					console.log(e)
+				}
+			})
+
+			return false;
+		}
+
+        function createRow(movie) {
+            console.log("It's entering createRow")
+            //new row elements
+            let newRow = document.createElement("div")
+            newRow.classList.add("row", "mt-3", "track")
+            
+            //create poster col 
+            let posterCol = document.createElement("div")
+            posterCol.classList.add("col", "poster")
+            const posterImg = document.createElement("img")
+            posterImg.classList.add("poster-img")
+            //adds default image if no poster available 
+            if (movie.poster_path){
+                posterImg.src = "https://image.tmdb.org/t/p/w500/" + movie.poster_path 
+            }
+            else {
+                posterImg.src = "https://woodstoneseniorliving.com/wp-content/uploads/2021/07/sun-blog.png"
+            }
+
+            posterImg.alt = movie.title + " Poster"
+            posterCol.appendChild(posterImg)
+
+            // create title
+            let titleCol = document.createElement("div")
+            titleCol.classList.add("col", "title")
+            titleCol.innerHTML = movie.title 
+
+            // create movie
+            let releaseCol = document.createElement("div")
+            releaseCol.classList.add("col", "release")
+            releaseCol.innerHTML = movie.release_date 
+
+            // create rating
+            let ratingCol = document.createElement("div")
+            ratingCol.classList.add("col", "rating")
+            ratingCol.innerHTML = movie.vote_average 
+            
+            // Append 
+            newRow.appendChild(posterCol)
+            newRow.appendChild(titleCol)
+            newRow.appendChild(releaseCol)
+            newRow.appendChild(ratingCol)
+
+            const containerResults = document.querySelector(".containerResults")
+            containerResults.appendChild(newRow)
+
+        }
+
+    </script>
+
+</body>
+</html>
