@@ -59,8 +59,7 @@ Source data includes 20 preloaded pets and user-submitted entries.
 ## Core Features
 
 ### 5.1 Login with Session Handling
-
-On `login.php`, PHP starts a session and checks login credentials against hardcoded demo values.
+<img width="617" height="322" alt="Image" src="https://github.com/user-attachments/assets/1aa18fde-9176-4ddd-b008-bd2166a79371" />
 
 ```php
 session_start();
@@ -108,6 +107,10 @@ if (!email.endsWith("usc.edu")) showError("Must be USC email")
   - Edit or delete submitted pets (AJAX for remove)
   - Navigate to `cart.html` and rename a pet before adoption
   - Click **"Adopt Now!"** to complete the flow and return to login
+ 
+<img width="638" height="362" alt="Image" src="https://github.com/user-attachments/assets/7623409f-1019-4fb0-a63a-35f8d2dbde6b" />
+
+<img width="650" height="345" alt="Image" src="https://github.com/user-attachments/assets/ecc0e487-3846-4674-9c36-1585c90f1ff3" />
 
 ---
 
@@ -140,6 +143,9 @@ $breed_id = $_POST['inputBreed'];
 $sql = "INSERT INTO pets (pet_name, breed_id, gender_id, age, type_id)
         VALUES ('$name', '$breed_id', '$gender_id', '$age', '$type_id')";
 ```
+<img width="629" height="337" alt="Image" src="https://github.com/user-attachments/assets/30016a24-dcdb-4992-a847-e583654026f2" />
+
+<img width="622" height="244" alt="Image" src="https://github.com/user-attachments/assets/8eedaab9-9a96-4e78-8c08-7d296a1b68d2" />
 
 ---
 
@@ -164,7 +170,8 @@ clone.querySelector('.remove-btn').addEventListener('click', function(event) {
 ```
 
 → Clicking **"Adopt Now!"** redirects back to `login.php` with a confirmation message.
-
+On `login.php`, PHP starts a session and checks login credentials against hardcoded demo values.
+<img width="630" height="327" alt="Image" src="https://github.com/user-attachments/assets/e80e3a1a-0c45-4092-ad29-35a7e1d4e0ef" />
 ---
 
 ### 5.7 Removing a Pet (AJAX)
