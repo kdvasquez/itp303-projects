@@ -92,7 +92,7 @@ Static HTML/CSS mockups for the final project's front-end, including a shop, car
 
 ---
 
-### `final_project` — Full-Stack Pet Shop
+### `final_project` — Pawleeze Full-Stack Pet Shop
 A complete full-stack web application for a pet shop. Users can browse pets, add them to a cart, and log in. Admins can add, edit, and remove pet listings. Backed by a MySQL database.
 
 - `shop.php` — Main product listing page (dynamic, pulls from DB)
