@@ -52,8 +52,7 @@ root/
 
 Source data includes 20 preloaded pets and user-submitted entries.
 
-> 📌 *Database diagram image — add yours here:*
-> `![Database Diagram](./img/db-diagram.png)`
+<img width="2827" height="1237" alt="Image" src="https://github.com/user-attachments/assets/e5d872b5-70db-4a04-a2a0-5c2e0d3a798f" />
 
 ---
 
